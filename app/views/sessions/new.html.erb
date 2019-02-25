@@ -1,0 +1,32 @@
+<% provide :title, t(".login") %>
+<h1><%= t ".login" %></h1>
+<div class="container">
+  <div class="row">
+    <div class="class_form">
+      <%= form_for(:session, url: login_path) do |f| %>
+        <div class="login_title">
+          <h4 class="title_heading"><%= t(".login") %></h4>
+        </div>
+        <div class="input-group mb-2 mr-sm-2">
+          <div class="input-group-prepend">
+            <div class="input-group-text">
+              <i class="fa fa-envelope-o" aria-hidden="true"></i>
+            </div>
+          </div>
+          <%= f.email_field :email, class: "form-control", placeholder: t(".type_email") %>
+        </div>
+        <div class="input-group mb-2 mr-sm-2">
+          <div class="input-group-prepend">
+            <div class="input-group-text"><i class="fa fa-sign-out" aria-hidden="true"></i></div>
+          </div>
+          <%= f.password_field :password, class: "form-control", placeholder: t(".type_password") %>
+        </div>
+        <%= f.label :remember_me, class: "checkbox inline" do %>
+          <%= f.check_box :remember_me %>
+          <span><%= t ".remember_me" %></span>
+        <% end %>
+        <%= f.submit t(".login"), class: "btn btn-primary btn-block" %>
+      <% end %>
+    </div>
+  </div>
+</div>

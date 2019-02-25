@@ -94,7 +94,8 @@ ActiveRecord::Schema.define(version: 2019_02_19_093713) do
     t.date "birthday"
     t.string "password"
     t.string "password_digest"
-    t.integer "group", default: 0
+    t.integer "group", default: 0, null: false
+    t.string "remember_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
