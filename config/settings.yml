@@ -1,0 +1,9 @@
+user:
+  email_max_length: 255
+  password_min_length: 6
+  name_min_length: 4
+  name_max_length: 50
+  remember: "1"
+  time_reset: 2
+pagination:
+  per_page: 10

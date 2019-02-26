@@ -1,0 +1,43 @@
+<header class="navbar-custom">
+  <nav class="navbar navbar-expand-lg navbar-light tutor-navbar">
+    <a class="navbar-brand" href="/"><%= t ("layouts.application.fts_title") %></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <%= form_tag "#", method: :get, class: "form-inline my-2 my-lg-0 form-search", autofocus: true do %>
+      <span class="fa fa-search icon-search-course" icon="search"></span>
+      <%= text_field_tag :name, params[:name], class: "input-search mr-sm-2", placeholder: t(".search") %>
+    <% end %>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav ml-md-auto d-md-flex" >
+        <li class="nav-item active">
+          <%= link_to root_path, class: "nav-link" do %>
+            <i class="fa fa-home"></i><%= t ".nav_home" %>
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <%= link_to help_path, class: "nav-link" do %>
+            <i class="fa fa-question"></i><%= t ".nav_help" %>
+          <% end %>
+        </li>
+        <% if logged_in? %>
+          <li class="nav-item dropdown">
+              <a href="#" class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown">
+                <i class="fa fa-user"></i><%= t ".nav_account" %>
+              </a>
+              <div class="dropdown-menu">
+                <%= link_to t(".nav_setting"), root_path, class: "dropdown-item" %>
+                <%= link_to t(".nav_logout"), logout_path, method: :delete, class: "dropdown-item" %>
+              </div>
+          </li>
+        <% else %>
+          <li class="nav-item">
+            <%= link_to login_path, class: "nav-link" do %>
+              <i class="fa fa-sign-in"></i><%= t(".nav_login") %>
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </nav>
+</header>

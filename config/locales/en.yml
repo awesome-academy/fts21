@@ -30,9 +30,28 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  layout:
+  layouts:
     application:
       fts_title: "FTS"
+      time_default: "%d/%m/%Y"
+    header:
+      nav_home: "Home"
+      nav_profile: "Profile"
+      nav_login: "Login"
+      nav_setting: "Settings"
+      nav_logout: "Logout"
+      nav_users: "Users"
+      nav_account: "Account"
+      nav_help: "Help"
+      search: "Search..."
+    footer:
+      title_about: "About"
+      title_contact: "Contact"
+      copyright: "Copyright © 2019"
+      author: " Huu Hung "
+      f_by: "By"
+      email: "Email: huuhung1996@gmail.com"
+      url_author: "http://fb.com/huuhunghienhoa"
   public:
     404:
       title: "The page you were looking for doesn't exist (404)"
@@ -48,3 +67,85 @@ en:
       title: "We're sorry, but something went wrong (500)"
       content1: "We're sorry, but something went wrong."
       content2: "If you are the application owner check the logs for more information."
+  will_paginate:
+    previous_label: "&#8592;"
+    next_label: "&#8594;"
+    page_gap: "&hellip;"
+  users:
+    index:
+      all_users: "All user"
+    new:
+      sign_up: "Sign up"
+      p_content: "This will be a signup page for new users."
+      create_account: "Create my account"
+      pass_confirm: "Confirmation"
+    create:
+      check_email: "Please check your email to activate your account."
+    edit:
+      title: "Edit user"
+      btn_save: "Save changes"
+      h1: "Update your profile"
+      change: "Change"
+    update:
+      mess_success: "Profile updated"
+      mess_fail: "Updating information failed"
+    destroy:
+      mess_success: "User deleted"
+      mess_fail: "Deleting user failed"
+    logged_in_user:
+      mess_error: "Please log in."
+    correct_user:
+      mess_permission: "You do not have permission to edit other people's information"
+    user:
+      delete: "delete"
+      mess_confirm: "You sure?"
+  static_pages:
+    home:
+      title: "Home"
+    about:
+      title: "About"
+    help:
+      title: "Help"
+    contact:
+      title: "Contact"
+      body: "Contact the Ruby on Rails Tutorial about the sample app at the"
+      title_contact: "contact page"
+  shared:
+    error_messages:
+      form_error: "The form contains"
+      error: "error"
+    sidebar:
+      courses: "Courses"
+      all_courses: "All courses"
+      new_course: "Create course"
+      all_subjects: "All subjects"
+      new_subject: "New subject"
+  sessions:
+    not_access: "You do not have access"
+    logged: "You are logged in"
+    new:
+      login: "Log in"
+      sign_up: "Sign up now!"
+      new_user: "New user?"
+      type_email: "Type email"
+      type_password: "Type password"
+      remember_me: "Remember me on this computer"
+    create:
+      login_error: "Invalid email/password combination"
+      account_not_activated: "Account not activated. Check your email for the activation link."
+  password_resets:
+    new:
+      title: "Forgot password"
+      submit: "Submit"
+    create:
+      sent_email_reset: "Email sent with password reset instructions"
+      not_found_email: "Email address not found"
+    edit:
+      title: "Reset password"
+      update_password: "Update password"
+      confirm: "Confirmation"
+    update:
+      empty_password: "can't be empty"
+      reset_password: "Password has been reset"
+    check_expiration:
+      expired_password: "Password reset has expired."
