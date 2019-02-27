@@ -24,6 +24,8 @@ class User < ApplicationRecord
 
   enum group: [:trainee, :suppervisor]
 
+  scope :alphabet, ->{order name: :asc}
+
   has_secure_password
 
   def self.digest string

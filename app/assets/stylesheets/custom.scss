@@ -1,5 +1,6 @@
 @import 'bootstrap';
 @import 'font-awesome';
+@import 'simplemde.min';
 /* mixins, variables, etc. */
 $gray-medium-light: #eaeaea;
 $gray-border: #bbb;
@@ -303,4 +304,8 @@ ul {
   margin-left: 15px;
   }
 }
+}
+.time_course .date_course {
+  margin-left: 10px;
+  color: blue;
 }

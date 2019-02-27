@@ -1,0 +1,5 @@
+<% provide :title, t("courses.new") %>
+<% provide :button_text, t("courses.btn_create") %>
+<h1><%= t("courses.new") %></h1>
+<%= render "form", course: @course %>
+<%= link_to t("courses.back"), courses_path %>

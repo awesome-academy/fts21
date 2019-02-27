@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(version: 2019_02_19_093713) do
     t.string "name"
     t.text "description"
     t.integer "suppervisor_id"
-    t.boolean "status", default: true
+    t.boolean "status", default: false
     t.datetime "date_start"
     t.datetime "date_end"
     t.datetime "created_at", null: false
@@ -59,7 +59,7 @@ ActiveRecord::Schema.define(version: 2019_02_19_093713) do
   create_table "user_courses", force: :cascade do |t|
     t.integer "user_id"
     t.integer "course_id"
-    t.integer "status", default: 0
+    t.integer "status", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["course_id"], name: "index_user_courses_on_course_id"
@@ -68,11 +68,11 @@ ActiveRecord::Schema.define(version: 2019_02_19_093713) do
 
   create_table "user_subjects", force: :cascade do |t|
     t.integer "user_id"
-    t.integer "subject_id"
-    t.boolean "status", default: true
+    t.integer "course_subject_id"
+    t.integer "status", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["subject_id"], name: "index_user_subjects_on_subject_id"
+    t.index ["course_subject_id"], name: "index_user_subjects_on_course_subject_id"
     t.index ["user_id"], name: "index_user_subjects_on_user_id"
   end
 
