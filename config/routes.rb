@@ -13,6 +13,13 @@ Rails.application.routes.draw do
   namespace :trainee do
     root "courses#index"
   end
-  resources :courses
+  resources :courses do
+    member do
+      get "assign_trainee"
+      post "add_trainee"
+      post "start"
+      get "delete_trainee"
+    end
+  end
   resources :subjects
 end

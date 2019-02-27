@@ -7,3 +7,5 @@ user:
   time_reset: 2
 pagination:
   per_page: 10
+course:
+  name_min_length: 5

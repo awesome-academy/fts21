@@ -30,6 +30,12 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
+  time:
+    formats:
+      own: "%H:%M:%S, %d %B"
+      default: "%d/%m/%Y"
+  not_found: "Not found"
+  disable_search_threshold: 3
   layouts:
     application:
       fts_title: "FTS"
@@ -149,3 +155,30 @@ en:
       reset_password: "Password has been reset"
     check_expiration:
       expired_password: "Password reset has expired."
+  courses:
+      select_suppervisor: "Select suppersivor"
+      select_subject: "Select subject"
+      new: "New course"
+      back: "Back"
+      edit: "Edit course"
+      show: "Show course"
+      btn_save: "Save course"
+      btn_create: "Create course"
+      start: "Start Course"
+      subjects: "Subjects"
+      all: "All courses"
+      content: "Content"
+      trainees: "Trainees"
+      no_trainee: "There are no trainees"
+      course_active: "This course is active"
+      no_trainee: "The course has no trainess. Can't start!"
+      no_subject: "The course has no subjects. Can't start!"
+      more_courses_active: "A trainee cannot operate at the same time in 2 different courses"
+      start_success: "The course is started"
+      date_end_earlier_start: "The end date cannot be earlier than the start date"
+      success: "Success!!"
+      fail: "Fail!"
+      start_at: "Start at: "
+      end_at: "End at: "
+      no_course: "There are no courses"
+      suppervisor: "Suppervisor: "

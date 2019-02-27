@@ -1,0 +1,14 @@
+<li class="<%= status_course course.status %>">
+  <%= link_to course.name, course %>
+  <span class="float-right">
+    <%= l course.date_start, format: :default %> ->
+    <%= l course.date_end, format: :default %>
+  </span>
+  <% unless course.status? %>
+    <%= button_to t("courses.start"), start_course_path(course), class: "float-right btn btn-success", method: :post %>
+  <% end %>
+  <p><%= course.description %></p>
+  <span class="meta_course">
+    <span class="badge badge-info"><%= course.subjects.size %></span> <%= t("course.subjects") %>
+  </span>
+</li>

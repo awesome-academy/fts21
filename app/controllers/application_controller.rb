@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
   end
 
   def logged_in_supervisor
-    return if current_user&.suppervisor
+    return if current_user&.suppervisor?
     flash[:danger] = t "sessions.not_access"
     redirect_to root_path
   end

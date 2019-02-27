@@ -4,7 +4,7 @@ class CreateCourses < ActiveRecord::Migration[5.2]
       t.string :name, unique: true
       t.text :description
       t.integer :suppervisor_id
-      t.boolean :status, default: true
+      t.boolean :status, default: false
       t.datetime :date_start
       t.datetime :date_end
 

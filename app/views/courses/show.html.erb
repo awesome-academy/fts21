@@ -1,0 +1,39 @@
+<h1><%= @course.name %></h1>
+<%= button_to t("courses.start"), start_course_path(@course), method: :post, class: "btn btn-warning float-right" %>
+<span class="time_course">
+  <span class="date_course"><%= t("courses.start_at") %><%= @course.date_start.strftime t("layouts.application.time_default") %>
+  </span>
+  <span class="date_course"><%= t("courses.end_at") %><%= @course.date_end.strftime t("layouts.application.time_default") %>
+  </span>
+</span>
+<ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+  <li class="nav-item">
+    <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true"><%= t("courses.content") %></a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="pills-trainee-tab" data-toggle="pill" href="#pills-trainee" role="tab" aria-controls="pills-trainee" aria-selected="false"> <%= t("courses.trainees") %>
+      <span class="badge badge-success" id="sum_trainees">
+        <%= @course.trainees.size %>
+      </span>
+    </a>
+  </li>
+</ul>
+<div class="tab-content" id="pills-tabContent">
+  <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+    <div class="description_course">
+      <p><%= markdown @course.description %></p>
+    </div>
+  </div>
+  <div class="tab-pane fade" id="pills-trainee" role="tabpanel" aria-labelledby="pills-trainee-tab">
+      <ul class="list-group list-group-flush">
+       <% if @trainees.any? %>
+         <%= render partial: "shared/trainee", collection: @course.trainees, as: :trainee %>
+         <%= will_paginate @trainees %>
+       <% else %>
+         <div class="alert alert-danger" id="no_trainees"><%= t("courses.no_trainee") %>
+         </div>
+       <% end %>
+      </ul>
+    </div>
+</div>
+<div class="modal fade" id="modal-trainee">

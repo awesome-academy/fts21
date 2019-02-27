@@ -1,0 +1,36 @@
+<%= form_with(model: course, local: true) do |form| %>
+<%= render "shared/error_messages", object: form.object %>
+<div class="form-group row">
+  <%= form.label :name, class: "col-form-label col-sm-2" %>
+  <%= form.text_field :name, class: "form-control col-sm-10" %>
+</div>
+<div class="form-group">
+  <%= form.label :description %>
+  <%= form.text_area :description %>
+</div>
+<div class="form-group row">
+  <%= form.label :date_start, class: "col-sm-2" %>
+  <%= form.date_select :date_start, {order: [:day, :month, :year]}, {id: :course_date_start , class: "form-control col-sm-3"} %>
+</div>
+<div class="form-group row">
+  <%= form.label :date_end, class: "col-sm-2" %>
+  <%= form.date_select :date_end, {order: [:day, :month, :year]}, {id: :course_date_end , class: "form-control col-sm-3"} %>
+</div>
+<div class="form-group row">
+  <%= form.label :suppervisor, class: "col-sm-2" %>
+  <%= form.collection_select(:suppervisor_id, @users, :id, :name,
+  {prompt: t("courses.select_suppervisor")}, id: "suppervisor_course", class: "form-control col-md-10") %>
+</div>
+<div class="form-group row">
+  <%= form.label :subject, class: "col-sm-2" %>
+  <%= form.collection_select(:subject_ids, @subjects , :id, :name,
+  {prompt: t("courses.select_subject")}, multiple: true, id: "course_subjects", class: "form-control col-md-10") %>
+  <div class="form-group">
+
+  </div>
+</div>
+
+<div class="form-group row">
+  <%= form.submit yield(:button_text) ,class: "btn btn-primary btn-block" %>
+</div>
+<% end %>

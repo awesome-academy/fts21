@@ -1,0 +1,8 @@
+<% provide :title, t("courses.edit") %>
+<% provide :button_text, t("courses.btn_save") %>
+<h1><%= t("courses.edit") %></h1>
+
+<%= render "form", course: @course %>
+
+<%= link_to t(".course.show"), @course %> |
+<%= link_to t(".course.back"), courses_path %>
