@@ -20,4 +20,13 @@ class ApplicationController < ActionController::Base
     flash[:danger] = t "sessions.logged"
     redirect_to root_path
   end
+
+  def redirect_with_format mess
+    flash[:danger] = mess
+    if request.xhr?
+      render js: "window.location.href='"+root_path+"'"
+    else
+      redirect_to root_path
+    end
+  end
 end

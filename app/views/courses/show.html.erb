@@ -23,6 +23,12 @@
     <div class="description_course">
       <p><%= markdown @course.description %></p>
     </div>
+    <% if @subjects.any? %>
+      <%= render @subjects %>
+      <%= will_paginate @subjects %>
+    <% else %>
+      <div class="alert alert-danger"><%= t ("subjects.no_subject") %></div>
+    <% end %>
   </div>
   <div class="tab-pane fade" id="pills-trainee" role="tabpanel" aria-labelledby="pills-trainee-tab">
       <ul class="list-group list-group-flush">

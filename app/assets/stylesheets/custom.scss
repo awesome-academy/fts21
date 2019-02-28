@@ -5,24 +5,31 @@
 $gray-medium-light: #eaeaea;
 $gray-border: #bbb;
 $gray-white: rgb(250, 251, 251);
-$gray-light: #e8e8e8;
-$gray: #e8e8e8;
-$gray-darker: #e8e8e8;
+$gray-light: #f6f6f6;
+$gray: #d4d9df;
+$gray-darker: #d4d4d4;
 $gray-lighter: #e8e8e8;
 $state-danger-text: #e8e8e8;
+$white: #fff;
+$gray-white: #f6f6f6;
+$pink-light: #ff33cc;
+$blue-darker: #3366cc;
+$blue-light: #22c0e8;
+$black-light: #182026;
+$green-dark: #009966;
 
 .navbar-custom {
-  background-color: #fff;
-  box-shadow: rgba(235, 232, 232, 0.498039) 0px 1px 4px 0px;
+  background-color: $white;
+  box-shadow: $gray-darker 0px 1px 4px 0px;
   margin-bottom: 10px;
 }
 .form-search {
-  background: #f6f6f6 none repeat scroll 0% 0%;
+  background: $gray-white none repeat scroll 0% 0%;
   border-radius: 20px;
 }
 .icon-search-course {
   margin: 10px 8px 10px 12px;
-  color: #d4d4d4;
+  color: $gray-medium-light;
 }
 .input-search {
   padding: 5px;
@@ -31,7 +38,7 @@ $state-danger-text: #e8e8e8;
   width: 80%;
   transition: all 0.2s ease 0s;
   padding-right: 8px;
-  background: rgb(246, 246, 246) none repeat scroll 0% 0%;
+  background: $gray-light none repeat scroll 0% 0%;
   border: 0px none;
   height: 36px;
 }
@@ -110,13 +117,13 @@ a:hover {
 }
 .a_Menu .sheading .title {
   font-size: 16px;
-  color: rgb(0, 0, 0);
+  color: $black-light;
   font-weight: 500;
   margin-left: 16px;
 }
 .a_Menu:hover {
   cursor: pointer;
-  background-color: rgb(246, 246, 246);
+  background-color: $gray-light;
   text-decoration: none;
 }
 .menu_Image {
@@ -127,12 +134,12 @@ a:hover {
   align-items: center;
   -moz-box-pack: center;
   justify-content: center;
-  background-color: rgb(246, 246, 246);
+  background-color: $gray-light;
   border-radius: 4px;
 }
 .menu_content {
   margin-left: 24px;
-  border-left: 1px solid rgb(238, 238, 238);
+  border-left: 1px solid $gray-light;
   height: auto;
 }
 .menu_content .subMenuItem {
@@ -153,7 +160,7 @@ ul.timeline {
 }
 ul.timeline:before {
   content: ' ';
-  background: #d4d9df;
+  background: $gray;
   display: inline-block;
   position: absolute;
   left: 29px;
@@ -182,17 +189,17 @@ ul.timeline > li:before {
   display: inline-block;
   position: absolute;
   border-radius: 50%;
-  border: 3px solid #22c0e8;
+  border: 3px solid $blue-light;
   left: 20px;
   width: 20px;
   height: 20px;
   z-index: 400;
 }
 .title_subject a {
-  color: white;
+  color: $green-dark;
 }
 .description_course {
-  background-color: #F2F2F2;
+  background-color: $gray-white;
   margin-bottom: 10px;
   padding: 0 30px;
   border-radius: 9px;
@@ -214,7 +221,7 @@ ul.timeline > li:before {
   margin: 38px auto;
   width: 380px;
   padding: 24px 32px;
-  background-color: rgb(249, 249, 249);
+  background-color: $gray-white;
   border-radius: 4px;
 }
 .class_form input {
@@ -229,7 +236,7 @@ ul.timeline > li:before {
   justify-content: center;
 }
 .wrapper_login .separator {
-  border-bottom: 1px solid rgb(238, 238, 238);
+  border-bottom: 1px solid $gray-white;
   line-height: 0.1em;
   text-align: center;
   margin: 16px 0px 20px;
@@ -241,7 +248,7 @@ ul.timeline > li:before {
 }
 .wrapper_login .text {
   padding: 0px 16px;
-  background-color: rgb(250, 251, 251);
+  background-color: $gray-white;
   position: relative;
   z-index: 2;
 }
@@ -254,11 +261,11 @@ ul.timeline > li:before {
   margin-bottom: 10px;
 }
 .class_form a {
-  color: rgb(212, 212, 212) !important;
+  color: $gray-darker !important;
   transition: all 0.3s linear 0s;
 }
 .input-group-text {
-  background: #fff;
+  background: $white;
   border: none;
 }
 .class_form .form-control {
@@ -268,7 +275,7 @@ ul.timeline > li:before {
   margin-bottom: 20px !important;;
 }
 .title_heading {
-  color: #182026;
+  color: $black-light;
   font-weight: 600;
   margin: 0 0 10px;
   margin-bottom: 10px;
@@ -308,4 +315,24 @@ ul {
 .time_course .date_course {
   margin-left: 10px;
   color: blue;
+}
+.list_tasks .task_item {
+  clear:both;
+  h5 {
+    color: $pink-light;
+  }
+}
+.tasks_mess {
+  margin: 5px;
+  color: $blue-darker;
+}
+.belong_courses h4 {
+  margin: 10px;
+}
+.tasks_title {
+  margin: 5px;
+  color: blue;
+}
+.nested_form_tasks {
+  width: 100%;
 }

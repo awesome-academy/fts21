@@ -9,3 +9,6 @@ pagination:
   per_page: 10
 course:
   name_min_length: 5
+subject:
+  name_min_length: 5
+  day_min: 1

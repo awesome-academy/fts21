@@ -14,6 +14,7 @@
 //= require chosen.jquery
 //= require custom
 //= require simplemde.min
+//= require alertify
 //= require i18n
 //= require i18n.js
 //= require i18n/translations

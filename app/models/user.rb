@@ -25,6 +25,7 @@ class User < ApplicationRecord
   enum group: [:trainee, :suppervisor]
 
   scope :alphabet, ->{order name: :asc}
+  scope :by_ids, ->(ids){where id: ids}
 
   has_secure_password
 
