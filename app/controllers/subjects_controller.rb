@@ -2,8 +2,7 @@ class SubjectsController < ApplicationController
   before_action :logged_in_supervisor
   before_action :load_subject, except: %i(index new create subjects_by_ids)
   before_action :load_users, only: %i(new create edit update)
-  before_action :load_tasks, only: :show
-  before_action :load_courses, only: :show
+  before_action :load_tasks, :load_courses, only: :show
 
   def index
     @subjects = Subject.includes(:tasks).newest.paginate page: params[:page],
@@ -21,7 +20,7 @@ class SubjectsController < ApplicationController
     @subject = Subject.new subject_params
     respond_to do |format|
       if @subject.save
-        flash[:success] = t("subjects.subject.create_success")
+        flash[:success] = t "subjects.subject.create_success"
         redirect_to subject_path @subject
       else
         @ers = @subject.errors.full_messages
@@ -53,7 +52,7 @@ class SubjectsController < ApplicationController
 
   def load_subject
     @subject = Subject.find_by id: params[:id]
-    @subject || redirect_with_format(t "subjects.not_found" )
+    @subject || redirect_with_format((t "subjects.not_found"))
   end
 
   def load_users
