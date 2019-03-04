@@ -18,6 +18,24 @@ module ApplicationHelper
     status ? "list-group-item-success" : "list-group-item-light"
   end
 
+  def status_course_subject_item course_subject
+    return "list-group-item-primary" if course_subject.joined?
+    return "list-group-item-info" if course_subject.active?
+    return "list-group-item-success" if course_subject.finished?
+  end
+
+  def status_course_subject_bg course_subject
+    return "bg-primary" if course_subject.joined?
+    return "bg-info" if course_subject.active?
+    return "bg-success" if course_subject.finished?
+  end
+
+  def course_subject_status_badge course_subject
+    return "badge badge-primary" if course_subject.joined?
+    return "badge badge-info" if course_subject.active?
+    return "badge badge-success" if course_subject.finished?
+  end
+
   def status_course status
     status ? "active" : "closed"
   end

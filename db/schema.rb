@@ -15,7 +15,7 @@ ActiveRecord::Schema.define(version: 2019_02_19_093713) do
   create_table "course_subjects", force: :cascade do |t|
     t.integer "course_id"
     t.integer "subject_id"
-    t.boolean "status", default: true
+    t.integer "status", default: 0, null: false
     t.datetime "date_start"
     t.datetime "date_end"
     t.datetime "created_at", null: false
