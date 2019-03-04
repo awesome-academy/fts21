@@ -13,4 +13,6 @@
  *= require_tree .
  *= require_self
  *= require chosen
+ *= require alertify
+ *= require themes/default
  */

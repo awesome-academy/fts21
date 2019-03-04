@@ -2,7 +2,7 @@ class Course < ApplicationRecord
   belongs_to :suppervisor, class_name: User.name
   has_many :course_subjects, dependent: :destroy
   has_many :subjects, through: :course_subjects
-  has_many :user_courses
+  has_many :user_courses, dependent: :destroy
   has_many :trainees, through: :user_courses, source: :user
 
   validates :name, presence: true,
