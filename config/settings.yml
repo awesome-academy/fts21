@@ -12,3 +12,5 @@ course:
 subject:
   name_min_length: 5
   day_min: 1
+task:
+  name_min_length: 5

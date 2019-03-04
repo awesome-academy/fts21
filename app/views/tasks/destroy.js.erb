@@ -1,0 +1,6 @@
+<% if @check_success %>
+  $('#task_<%= @old_task_id %>').remove();
+  alertify.success(I18n.t('subjects.task.delete_success'));
+<% else %>
+  alertify.error(I18n.t('subjects.task.delete_fail'));
+<% end %>
