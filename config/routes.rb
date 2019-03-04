@@ -24,5 +24,9 @@ Rails.application.routes.draw do
   resources :subjects
   resources :course_subjects, only: :show do
     resources :tasks, except: %i(index show)
+    member do
+      patch "finish"
+      patch "start"
+    end
   end
 end

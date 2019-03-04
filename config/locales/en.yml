@@ -244,3 +244,11 @@ en:
       name: "Name"
       description: "Description"
       not_found: "Task does not exist"
+  course_subjects:
+    actived: "This subject of the course is being activated"
+    finished: "This subject of the course was finished"
+    start_success: "Start the subject successfully"
+    finish_success: "Finish the subject successfully"
+    start_subject: "Start subject"
+    finish_subject: "Finish subject"
+    not_accepted: "Not accepted"

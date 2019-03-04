@@ -78,14 +78,14 @@ ActiveRecord::Schema.define(version: 2019_02_19_093713) do
 
   create_table "user_tasks", force: :cascade do |t|
     t.integer "task_id"
-    t.integer "user_id"
-    t.integer "status", default: 1
+    t.integer "user_subject_id"
+    t.integer "status", default: 0
     t.datetime "receive_at"
     t.datetime "finish_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["task_id"], name: "index_user_tasks_on_task_id"
-    t.index ["user_id"], name: "index_user_tasks_on_user_id"
+    t.index ["user_subject_id"], name: "index_user_tasks_on_user_subject_id"
   end
 
   create_table "users", force: :cascade do |t|
