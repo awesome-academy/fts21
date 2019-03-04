@@ -52,7 +52,7 @@ class SubjectsController < ApplicationController
 
   def load_subject
     @subject = Subject.find_by id: params[:id]
-    @subject || redirect_with_format((t "subjects.not_found"))
+    @subject || redirect_with_format(t("subjects.not_found"))
   end
 
   def load_users

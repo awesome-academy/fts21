@@ -35,6 +35,7 @@ en:
       own: "%H:%M:%S, %d %B"
       default: "%d/%m/%Y"
   not_found: "Not found"
+  confirm: "Are you sure?"
   disable_search_threshold: 3
   layouts:
     application:
@@ -225,3 +226,12 @@ en:
       belong_courses: "Belong to the courses"
       remove: "Remove"
       add_more: "Add more task"
+      save: "Save"
+      close: "Close"
+      create_success: "Create a successful task"
+      update_success: "Update a successful task"
+      delete_success: "Delete successful task"
+      delete_fail: "Delete failed task"
+      name: "Name"
+      description: "Description"
+      not_found: "Task does not exist"

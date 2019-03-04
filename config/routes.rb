@@ -22,5 +22,7 @@ Rails.application.routes.draw do
     end
   end
   resources :subjects
-  resources :course_subjects, only: :show
+  resources :course_subjects, only: :show do
+    resources :tasks, except: %i(index show)
+  end
 end
