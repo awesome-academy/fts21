@@ -176,11 +176,18 @@ ul.timeline > li.active {
   border: 1px dotted blue;
   padding: 5px;
 }
-ul.timeline > li.closed {
+ul.timeline > li.joined {
+  border: 1px dotted purple;
+  padding: 5px;
+}
+ul.timeline > li.joined:before {
+  border: 3px solid purple;
+}
+ul.timeline > li.closed, ul.timeline > li.finished {
   border: 1px dotted red;
   padding: 5px;
 }
-ul.timeline > li.closed:before {
+ul.timeline > li.closed:before, ul.timeline > li.finished:before {
   border: 3px solid red;
 }
 ul.timeline > li:before {

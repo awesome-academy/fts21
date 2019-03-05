@@ -1,0 +1,11 @@
+<li class="<%= status_user_course user_course %>">
+  <%= link_to user_course.name, trainee_user_course_path(user_course.id) %>
+  <span class="float-right">
+    <%= l user_course.date_start, format: :default %> ->
+    <%= l user_course.date_end, format: :default %>
+  </span>
+  <p><%= user_course.description %></p>
+  <span class="meta_course">
+    <span class="badge badge-info"><%= user_course.course.subjects.size %></span> <%= t("course.subjects") %>
+  </span>
+</li>
