@@ -7,7 +7,7 @@
       </button>
     </div>
     <div class="modal-body">
-      <%= form_for [@course_subject, @task], remote: true do |f| %>
+      <%= form_for [@subject, @task], remote: true do |f| %>
         <div class="form-group">
           <%= f.label t("subjects.task.name") %>
           <%= f.text_field :name, class: "form-control" %>

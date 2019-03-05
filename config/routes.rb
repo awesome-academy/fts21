@@ -21,9 +21,10 @@ Rails.application.routes.draw do
       get "delete_trainee"
     end
   end
-  resources :subjects
-  resources :course_subjects, only: :show do
+  resources :subjects do
     resources :tasks, except: %i(index show)
+  end
+  resources :course_subjects, only: :show do
     member do
       patch "finish"
       patch "start"

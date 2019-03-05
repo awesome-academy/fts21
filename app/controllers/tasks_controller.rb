@@ -1,6 +1,6 @@
 class TasksController < ApplicationController
   before_action :logged_in_supervisor
-  before_action :load_course_subject, :load_subject, except: :destroy
+  before_action :load_subject, except: :destroy
   before_action :load_task, except: %i(new create)
 
   def new
@@ -55,11 +55,7 @@ class TasksController < ApplicationController
   end
 
   def load_subject
-    @subject = @course_subject.subject
-  end
-
-  def load_course_subject
-    @course_subject = CourseSubject.find_by id: params[:course_subject_id]
-    @course_subject || redirect_with_format(t("not_found"))
+    @subject = Subject.find_by id: params[:subject_id]
+    @subject || redirect_with_format(t("subjects.not_found"))
   end
 end

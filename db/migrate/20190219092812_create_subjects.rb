@@ -3,7 +3,6 @@ class CreateSubjects < ActiveRecord::Migration[5.2]
     create_table :subjects do |t|
       t.string :name, unique: true
       t.text :description
-      t.references :course, foreign_key: true
       t.integer :time_day
       t.boolean :status, default: true
       t.integer :suppervisor_id
