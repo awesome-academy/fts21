@@ -1,0 +1,31 @@
+<div class="menu_Sidebar">
+  <div class="subMenuItem">
+    <span class="a_Menu active toggle_menu" data-toggle="menu_show-course">
+      <div class="sheading">
+       <div class="menu_Image">
+         <i class="fa fa-user-circle-o" aria-hidden="true"></i>
+        </div>
+       <span class="title"><%= t(".courses") %></span>
+       <i class="fa fa-chevron-down pull-right"></i>
+     </div>
+   </span>
+ </div>
+ <div class="menu_content" id="menu_show-course">
+   <div class="subMenuItem">
+     <%= link_to t(".all_courses"), courses_path, class: "heading" %>
+   </div>
+ </div>
+ <div class="subMenuItem">
+  <span class="a_Menu toggle_menu" data-toggle="menu_show-subject">
+    <div class="sheading">
+     <div class="menu_Image"><i class="fa fa-key" aria-hidden="true"></i></div>
+     <span class="title"><%= t(".subjects") %></span><i class="fa fa-chevron-down pull-right"></i>
+   </div>
+ </span>
+</div>
+ <div class="menu_content" id="menu_show-subject">
+   <div class="subMenuItem">
+     <%= link_to t(".all_subjects"), subjects_path , class: "heading" %>
+   </div>
+ </div>
+</div>

@@ -199,6 +199,10 @@ en:
       assign_trainee_title: "Assign Trainee to course"
       no_users_to_add: "No more users to add"
       not_allow_add_member: "The course has started, cannot add members"
+      no_course_active: "No courses are active"
+      course_active: "Courses active"
+      course_joined: "Courses joined"
+      no_course_joined: "No courses joined"
   subjects:
     select_suppervisor: "Select suppersivor"
     new: "New subject"

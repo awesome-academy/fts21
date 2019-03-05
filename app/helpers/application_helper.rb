@@ -40,6 +40,12 @@ module ApplicationHelper
     status ? "active" : "closed"
   end
 
+  def status_user_course user_course
+    return "joined" if user_course.joined?
+    return "active" if user_course.active?
+    return "finished" if user_course.finished?
+  end
+
   def markdown content
     renderer = HTMLwithPygments.new(hard_wrap: true, filter_html: true, tables: true)
     options = {
