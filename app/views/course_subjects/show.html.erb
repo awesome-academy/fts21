@@ -19,6 +19,8 @@
   <div class="col-md-3">
     <div class="belong_courses">
       <%= button_to t("subjects.task.new"), new_course_subject_task_path(@course_subject), method: :get, remote: true, class: "btn btn-primary btn-block" %>
+      <%= button_to t("course_subjects.finish_subject"), finish_course_subject_path(@course_subject), method: :patch, class: "btn btn-danger btn-block" if @course_subject.active? %>
+      <%= button_to t("course_subjects.start_subject"), start_course_subject_path(@course_subject), method: :patch, class: "btn btn-success btn-block" if @course_subject.joined? %>
       <h4><%= t "subjects.task.belong_courses" %></h4>
       <ul class="list-group">
          <% if @courses.any? %>

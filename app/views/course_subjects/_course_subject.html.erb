@@ -13,6 +13,8 @@
             <span class="badge badge-danger"><%= course_subject.subject.time_day %></span><%= t "subjects.time_day" %>
             <span class="<%= course_subject_status_badge course_subject %>"><%= course_subject.status %></span>
           </span>
+          <%= button_to t("course_subjects.finish_subject"), finish_course_subject_path(course_subject), method: :patch, class: "btn btn-danger btn-block" if course_subject.active? %>
+          <%= button_to t("course_subjects.start_subject"), start_course_subject_path(course_subject), method: :patch, class: "btn btn-success btn-block" if course_subject.joined? %>
         </div>
       </div>
       <div id="subject-<%= course_subject.subject.id %>">
