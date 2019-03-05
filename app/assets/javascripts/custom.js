@@ -57,3 +57,47 @@ $(document).on('click', '.destroy_nested_form_tasks', function(e){
     alertify.error(I18n.t('subjects.task.not_accept'));
   }
 });
+
+$(document).on('click', '#add_trainee', function(e){
+  var checked = []
+  $("input[name='course[trainee_ids][]']:checked").each(function ()
+  {
+    checked.push(parseInt($(this).val()));
+  });
+  if( checked.length == 0 ){
+    alertify.error(I18n.t("courses.add_trainee"));
+  } else {
+    alertify.confirm(I18n.t("confirm_text"), I18n.t("confirm"),
+      function(){
+        $.ajax({
+          url: window.location.href + '/add_trainee',
+          type: 'POST',
+          data: {trainee_ids: checked},
+        })
+        .done(function(el) {
+          if(el && el.error){
+            alertify.error(el.error);
+          } else {
+            var sum_trainees = parseInt($('#sum_trainees').html());
+            $('#sum_trainees').html(el.length + sum_trainees);
+            $('#no_trainees').remove();
+            el.forEach(function (user) {
+              $('#pills-trainee .list-group').prepend('<li class="list-group-item">'+user.name+
+                '<div class="pull-right action-buttons">'+
+                '<i class="fa fa-pencil"></i>'+
+                '<i class="fa fa-trash" id="delete_trainee" trainee_id="'+user.id+'"></i>'+
+                '</div></li>');
+            })
+          }
+        })
+        .fail(function(err) {
+          alertify.error(err);
+        });
+        $('#modal-trainee').modal('hide');
+        $('.nav-item a[href="#pills-trainee"]').tab('show');
+      },
+      function(){
+        alertify.error(I18n.t("cancel"));
+      });
+  };
+});

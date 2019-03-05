@@ -36,6 +36,10 @@ en:
       default: "%d/%m/%Y"
   not_found: "Not found"
   confirm: "Are you sure?"
+  confirm_text: "Confirm"
+  cancel: "Cancel"
+  close: "Close"
+  add: "Add"
   disable_search_threshold: 3
   layouts:
     application:
@@ -190,6 +194,11 @@ en:
       date_end: "End date"
       suppervisor: "Suppervisor"
       subject: "Subject"
+      add_trainee: "Please select at least 1 person"
+      assign_trainee: "Assign trainee"
+      assign_trainee_title: "Assign Trainee to course"
+      no_users_to_add: "No more users to add"
+      not_allow_add_member: "The course has started, cannot add members"
   subjects:
     select_suppervisor: "Select suppersivor"
     new: "New subject"

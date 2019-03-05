@@ -58,6 +58,31 @@ class CoursesController < ApplicationController
     redirect_to @course
   end
 
+  def assign_trainee
+    @users = User.not_exit_on_course @course
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  def add_trainee
+    if @course.status
+      render json: {error: t("courses.not_allow_add_member")}
+    else
+      begin
+        trainee_ids = params[:trainee_ids].map(&:to_i) - @course.trainee_ids
+        ActiveRecord::Base.transaction do
+          trainee_ids.each do |trainee_id|
+            @course.user_courses.create! user_id: trainee_id
+          end
+        end
+        render json: User.with_id_name(trainee_ids)
+      rescue StandardError => ex
+        render json: {error: ex}
+      end
+    end
+  end
+
   private
 
   def course_params

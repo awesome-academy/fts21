@@ -26,6 +26,8 @@ class User < ApplicationRecord
 
   scope :alphabet, ->{order name: :asc}
   scope :by_ids, ->(ids){where id: ids}
+  scope :not_exit_on_course, ->(course_id){where("id not in (?)", UserCourse.select("user_id").where(course_id: course_id))}
+  scope :with_id_name, ->(ids){where(id: ids).select(:id, :name)}
 
   has_secure_password
 
