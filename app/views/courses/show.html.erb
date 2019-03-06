@@ -1,5 +1,5 @@
 <h1><%= @course.name %></h1>
-<%= button_to t("courses.start"), start_course_path(@course), method: :post, class: "btn btn-warning float-right" %>
+<%= button_to t("courses.start"), start_course_path(@course), method: :post, class: "btn btn-warning float-right" if @course.ready? %>
 <%= button_to t("courses.assign_trainee"), assign_trainee_course_path(@course), method: :get, class: "btn btn-success float-right", remote: true %>
 <span class="time_course">
   <span class="date_course"><%= t("courses.start_at") %><%= @course.date_start.strftime t("layouts.application.time_default") %>
