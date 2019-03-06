@@ -5,7 +5,7 @@ class CourseSubjectsController < ApplicationController
   def show; end
 
   def start
-    if @course_subject.joined?
+    if @course_subject.joined? && @course_subject.course.active?
       begin
         ActiveRecord::Base.transaction do
           dead_line = Time.now + @course_subject.subject.time_day.days
@@ -24,13 +24,13 @@ class CourseSubjectsController < ApplicationController
   end
 
   def finish
-    if @course_subject.active?
+    if @course_subject.active? && @course_subject.course.active?
       begin
         ActiveRecord::Base.transaction do
-          @course_subject.update_attributes! status: :finished
+          @course_subject.finished!
           @course_subject.user_subjects.update_all status: :finished
           @course_subject.user_subjects.each do |u_s|
-            u_s.user_tasks.update_all status: :finished, finished_at: Time.now
+            u_s.user_tasks.update_all status: :finished, finish_at: Time.now
           end
         end
         flash[:success] = t "course_subjects.finish_success"

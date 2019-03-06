@@ -17,7 +17,7 @@ class Trainee::CourseSubjectsController < TraineeController
   end
 
   def load_user_tasks
-    @user_subject_tasks_doing = @user_subject.user_tasks
+    @user_tasks = @user_subject.user_tasks
   end
 
   def load_subject

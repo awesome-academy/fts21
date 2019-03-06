@@ -1,10 +1,10 @@
-<li class="<%= status_course course.status %>">
+<li class="<%= status_course course %>">
   <%= link_to course.name, course %>
   <span class="float-right">
     <%= l course.date_start, format: :default %> ->
     <%= l course.date_end, format: :default %>
   </span>
-  <% unless course.status? %>
+  <% if course.ready? %>
     <%= button_to t("courses.start"), start_course_path(course), class: "float-right btn btn-success", method: :post %>
   <% end %>
   <p><%= course.description %></p>

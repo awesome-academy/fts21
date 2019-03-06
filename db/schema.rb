@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(version: 2019_02_19_093713) do
     t.string "name"
     t.text "description"
     t.integer "suppervisor_id"
-    t.boolean "status", default: false
+    t.integer "status", default: 0, null: false
     t.datetime "date_start"
     t.datetime "date_end"
     t.datetime "created_at", null: false
@@ -38,13 +38,11 @@ ActiveRecord::Schema.define(version: 2019_02_19_093713) do
   create_table "subjects", force: :cascade do |t|
     t.string "name"
     t.text "description"
-    t.integer "course_id"
     t.integer "time_day"
     t.boolean "status", default: true
     t.integer "suppervisor_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["course_id"], name: "index_subjects_on_course_id"
   end
 
   create_table "tasks", force: :cascade do |t|

@@ -18,32 +18,54 @@ module ApplicationHelper
     status ? "list-group-item-success" : "list-group-item-light"
   end
 
+  def status_course course
+    if course.ready?
+      "joined"
+    elsif course.active?
+      "active"
+    else
+      "finished"
+    end
+  end
+
   def status_course_subject_item course_subject
-    return "list-group-item-primary" if course_subject.joined?
-    return "list-group-item-info" if course_subject.active?
-    return "list-group-item-success" if course_subject.finished?
+    if course_subject.joined?
+      "list-group-item-primary"
+    elsif course_subject.active?
+      "list-group-item-info"
+    else
+      "list-group-item-success"
+    end
   end
 
   def status_course_subject_bg course_subject
-    return "bg-primary" if course_subject.joined?
-    return "bg-info" if course_subject.active?
-    return "bg-success" if course_subject.finished?
+    if course_subject.joined?
+      "bg-primary"
+    elsif course_subject.active?
+      "bg-info"
+    else
+      "bg-success"
+    end
   end
 
   def course_subject_status_badge course_subject
-    return "badge badge-primary" if course_subject.joined?
-    return "badge badge-info" if course_subject.active?
-    return "badge badge-success" if course_subject.finished?
-  end
-
-  def status_course status
-    status ? "active" : "closed"
+    if course_subject.joined?
+      "badge badge-primary"
+    elsif course_subject.active?
+      "badge badge-info"
+    else
+      "badge badge-success"
+    end
   end
 
   def status_user_course user_course
-    return "joined" if user_course.joined?
-    return "active" if user_course.active?
-    return "finished" if user_course.finished?
+    if user_course.joined?
+      "joined"
+    elsif user_course.active?
+      "active"
+    else
+      "finished"
+    end
   end
 
   def markdown content
@@ -67,8 +89,12 @@ module ApplicationHelper
   end
 
   def status_stask_trainee user_task
-    return "list-group-item-dark" if user_task.received?
-    return "list-group-item-success" if user_task.finished?
-    return "list-group-item-danger" if user_task.expired?
+    if user_task.received?
+      "list-group-item-dark"
+    elsif user_task.finished?
+      "list-group-item-success"
+    else
+      "list-group-item-danger"
+    end
   end
 end

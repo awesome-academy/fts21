@@ -22,7 +22,7 @@ end
 
 3.times do |n|
   name = "Chu de so #{n+1}"
-  Subject.create!(name: name, description: "Mo ta #{n+1}", course_id: 1, time_day: 5, suppervisor_id: 1)
+  Subject.create!(name: name, description: "Mo ta #{n+1}", time_day: 5, suppervisor_id: 1)
 end
 
 3.times do |n|

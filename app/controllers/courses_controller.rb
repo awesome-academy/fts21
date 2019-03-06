@@ -42,8 +42,10 @@ class CoursesController < ApplicationController
   def destroy; end
 
   def start
-    if @course.status
+    if @course.active?
       flash[:danger] = t("courses.course_active")
+    elsif @course.close?
+      flash[:danger] = t("courses.course_close")
     elsif @course.trainees.none?
       flash[:danger] = t("courses.no_trainee")
     elsif @course.course_subjects.none?
@@ -66,9 +68,7 @@ class CoursesController < ApplicationController
   end
 
   def add_trainee
-    if @course.status
-      render json: {error: t("courses.not_allow_add_member")}
-    else
+    if @course.ready?
       begin
         trainee_ids = params[:trainee_ids].map(&:to_i) - @course.trainee_ids
         ActiveRecord::Base.transaction do
@@ -80,6 +80,8 @@ class CoursesController < ApplicationController
       rescue StandardError => ex
         render json: {error: ex}
       end
+    else
+      render json: {error: t("courses.not_allow_add_member")}
     end
   end
 
@@ -108,7 +110,7 @@ class CoursesController < ApplicationController
     begin
       ActiveRecord::Base.transaction do
         course_subject_ids = @course.course_subjects.pluck(:id).map{|id| {course_subject_id: id, status: :joined}}
-        @course.update_attributes! status: true
+        @course.active!
         @course.user_courses.update_all status: :active
         @course.trainees.each do |trainee|
           trainee.user_subjects.create! course_subject_ids

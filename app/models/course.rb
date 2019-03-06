@@ -9,6 +9,8 @@ class Course < ApplicationRecord
     length: {minimum: Settings.course.name_min_length}
   validate :end_time_is_valid
 
+  enum status: {ready: 0, active: 1, close: 2}
+
   scope :newest, ->{order created_at: :desc}
 
   def end_time_is_valid
