@@ -61,4 +61,14 @@ module ApplicationHelper
     }
     Redcarpet::Markdown.new(renderer, options).render(content).html_safe
   end
+
+  def number_to_percent value, sum
+    sum.zero? ? 0 : ((value.to_f / sum.to_f) * 100).round(0)
+  end
+
+  def status_stask_trainee user_task
+    return "list-group-item-dark" if user_task.received?
+    return "list-group-item-success" if user_task.finished?
+    return "list-group-item-danger" if user_task.expired?
+  end
 end

@@ -14,6 +14,17 @@ Rails.application.routes.draw do
     root "courses#index"
     resources :user_courses, only: :show
     resources :course_subjects, only: :show
+    resources :user_subjects, only: :show do
+      member do
+        patch "finish"
+      end
+      resources :tasks, only: :show do
+        member do
+          post "report"
+          patch "finish"
+        end
+      end
+    end
   end
   resources :courses do
     member do

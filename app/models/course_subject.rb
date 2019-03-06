@@ -4,4 +4,6 @@ class CourseSubject < ApplicationRecord
   has_many :user_subjects, dependent: :destroy
 
   enum status: {joined: 0, active: 1, finished: 2}
+  delegate :name, :time_day,
+    :description, to: :subject, allow_nil: true
 end
