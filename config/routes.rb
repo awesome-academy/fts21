@@ -31,6 +31,7 @@ Rails.application.routes.draw do
       get "assign_trainee"
       post "add_trainee"
       post "start"
+      patch "finish"
       get "delete_trainee"
     end
   end
