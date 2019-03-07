@@ -32,7 +32,7 @@ Rails.application.routes.draw do
       post "add_trainee"
       post "start"
       patch "finish"
-      get "delete_trainee"
+      delete "delete_trainee"
     end
   end
   resources :subjects do

@@ -207,6 +207,8 @@ en:
       finish_success: "Finish subject successfully"
       finish_course_not_allow: "Finish course is not allowed"
       finish: "Finish course"
+      delete_trainee_success: "Delete trainee successfully"
+      not_user_on_course: "Trainee does not exist in the course"
   subjects:
     select_suppervisor: "Select suppersivor"
     new: "New subject"
