@@ -4,9 +4,8 @@
     <%= l course.date_start, format: :default %> ->
     <%= l course.date_end, format: :default %>
   </span>
-  <% if course.ready? %>
-    <%= button_to t("courses.start"), start_course_path(course), class: "float-right btn btn-success", method: :post %>
-  <% end %>
+  <%= button_to t("courses.start"), start_course_path(course), class: "float-right btn btn-success", method: :post if course.ready? %>
+  <%= button_to t("courses.finish"), finish_course_path(course), class: "float-right btn btn-info", data:{confirm: t("confirm")}, method: :patch if course.active? %>
   <p><%= course.description %></p>
   <span class="meta_course">
     <span class="badge badge-info"><%= course.subjects.size %></span> <%= t("course.subjects") %>

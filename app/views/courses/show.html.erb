@@ -3,6 +3,7 @@
   <div class="action_button">
     <%= button_to t("courses.start"), start_course_path(@course), method: :post, class: "btn btn-warning float-right" if @course.ready? %>
     <%= button_to t("courses.assign_trainee"), assign_trainee_course_path(@course), method: :get, class: "btn btn-success float-right", remote: true %>
+    <%= button_to t("courses.finish"), finish_course_path(@course), class: "float-right btn btn-info", data:{confirm: t("confirm")}, method: :patch if @course.active? %>
   </div>
   <div class="course_meta">
     <span class="time_course">

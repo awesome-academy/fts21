@@ -204,6 +204,9 @@ en:
       course_active: "Courses active"
       course_joined: "Courses joined"
       no_course_joined: "No courses joined"
+      finish_success: "Finish subject successfully"
+      finish_course_not_allow: "Finish course is not allowed"
+      finish: "Finish course"
   subjects:
     select_suppervisor: "Select suppersivor"
     new: "New subject"
