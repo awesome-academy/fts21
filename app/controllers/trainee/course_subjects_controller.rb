@@ -25,6 +25,6 @@ class Trainee::CourseSubjectsController < TraineeController
   end
 
   def load_tasks
-    @report_tasks = @subject.tasks.not_exit_in_user_task
+    @report_tasks = @subject.tasks.not_exit_in_user_task @user_subject
   end
 end

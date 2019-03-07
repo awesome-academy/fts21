@@ -24,7 +24,7 @@
   </div>
   <div class="col-md-3">
     <div class="belong_courses">
-      <%= button_to t("course_subjects.finish_subject"), finish_trainee_user_subject_path(@user_subject), method: :patch, class: "btn btn-danger btn-block" %>
+      <%= button_to t("course_subjects.finish_subject"), finish_trainee_user_subject_path(@user_subject), method: :patch, class: "btn btn-danger btn-block", data:{confirm: t("confirm")} if @user_subject.active? %>
     </div>
     <h5 class="text-center"><%= t "user_subjects.task.progress" %></h5>
     <div class="progress">

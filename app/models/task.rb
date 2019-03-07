@@ -6,5 +6,5 @@ class Task < ApplicationRecord
     length: {minimum: Settings.task.name_min_length}
 
   scope :newest, ->{order created_at: :desc}
-  scope :not_exit_in_user_task, ->{where("id not in (?)", UserTask.task_in_user_tasks)}
+  scope :not_exit_in_user_task, ->(user_subject){where("id not in (?)", UserTask.task_in_user_tasks(user_subject))}
 end

@@ -352,3 +352,13 @@ ul {
   color: red;
   border-bottom: 1px dotted red;
 }
+.header_course {
+  width: 100%;
+  padding: 10px 0;
+  margin-bottom: 10px;
+  border-bottom: solid 1px $gray-darker;
+}
+.time_course .fa {
+  margin-right: 4px;
+  color: $black-light;
+}
