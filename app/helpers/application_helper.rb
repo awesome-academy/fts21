@@ -97,4 +97,12 @@ module ApplicationHelper
       "list-group-item-danger"
     end
   end
+
+  def task_of_course course
+    Task.of_subjects course.subject_ids
+  end
+
+  def user_task_finished course, user
+    UserSubject.task_by_course course, user
+  end
 end

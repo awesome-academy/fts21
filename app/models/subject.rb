@@ -1,6 +1,6 @@
 class Subject < ApplicationRecord
   belongs_to :suppervisor, class_name: User.name
-  has_many :tasks
+  has_many :tasks, dependent: :destroy
   has_many :course_subjects, dependent: :destroy
   has_many :courses, through: :course_subjects
 
