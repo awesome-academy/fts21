@@ -21,6 +21,7 @@ class CoursesController < ApplicationController
     @course = Course.new course_params
     if @course.save
       flash[:success] = t("courses.success")
+      activity_log current_user, @course, t("activities.create")
       redirect_to course_path @course
     else
       flash.now[:danger] = t("courses.fail")
@@ -57,6 +58,7 @@ class CoursesController < ApplicationController
       flash[:danger] = users.to_s
     else
       update_course_user_subject
+      activity_log current_user, @course, t("activities.start")
     end
     redirect_to @course
   end
@@ -66,6 +68,7 @@ class CoursesController < ApplicationController
       begin
         transaction_update_course
         flash[:success] = t "courses.finish_success"
+        activity_log current_user, @course, t("activities.finish")
       rescue StandardError => ex
         flash[:danger] = ex
       end

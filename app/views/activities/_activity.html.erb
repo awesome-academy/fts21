@@ -1,0 +1,22 @@
+<div class="col-12 activity_log">
+  <div class="fluid-container">
+    <div class="row activity-log mt-3 pb-2 border-bottom">
+      <div class="col-1">
+      </div>
+      <div class="ticket-details col-9">
+        <div class="d-flex">
+          <p class="text-primary font-weight-bold mr-2 mb-0 no-wrap"><%=activity.user.name %></p>
+          <p class="font-weight-bold mb-0 ellipsis"><%= activity.action_type %></p>
+          <span class="target_type"><%= activity.target_type %></span>
+        </div>
+        <p class="text-small text-gray"><%= activity.target.name %></p>
+        <div class="row text-muted d-flex">
+          <div class="col-4 d-flex">
+            <p class="mb-0 mr-2"><%= t "activities.at" %></p>
+            <p class="Last-responded mr-2 mb-0"><%= l activity.created_at, format: :default %></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

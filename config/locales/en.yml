@@ -285,4 +285,13 @@ en:
       completed: "Completed"
       at: "At"
       not_accepted: "Not accepted"
+  activities:
+    no_activity: "There is no activity"
+    create: "created"
+    update: "updated"
+    delete: "deleted"
+    start: "started"
+    finish: "finished"
+    report: "reported"
+    at: "At: "
 

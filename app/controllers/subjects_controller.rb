@@ -21,6 +21,7 @@ class SubjectsController < ApplicationController
     respond_to do |format|
       if @subject.save
         flash[:success] = t "subjects.subject.create_success"
+        activity_log current_user, @subject, t("activities.create")
         redirect_to subject_path @subject
       else
         @ers = @subject.errors.full_messages

@@ -4,6 +4,7 @@ class Course < ApplicationRecord
   has_many :subjects, through: :course_subjects
   has_many :user_courses, dependent: :destroy
   has_many :trainees, through: :user_courses, source: :user
+  has_many :activities, as: :target, dependent: :destroy
 
   validates :name, presence: true,
     length: {minimum: Settings.course.name_min_length}
@@ -12,6 +13,7 @@ class Course < ApplicationRecord
   enum status: {ready: 0, active: 1, close: 2}
 
   scope :newest, ->{order created_at: :desc}
+
 
   def end_time_is_valid
     return if date_start.blank? || date_end.blank?
