@@ -31,15 +31,13 @@ class ApplicationController < ActionController::Base
   end
 
   def update_finish_user_subject user_subject
-    begin
-      UserSubject.transaction do
-        user_subject.finished!
-        user_subject.user_tasks.update_all status: :finished, finish_at: Time.now
-      end
-      flash[:success] = t "user_subjects.finish_success"
-    rescue StandardError => ex
-      flash[:warning] = ex
-      flash[:danger] = t "user_subjects.finish_fail"
+    UserSubject.transaction do
+      user_subject.finished!
+      user_subject.user_tasks.update_all status: :finished, finish_at: Time.now
     end
+    flash[:success] = t "user_subjects.finish_success"
+  rescue StandardError => ex
+    flash[:warning] = ex
+    flash[:danger] = t "user_subjects.finish_fail"
   end
 end

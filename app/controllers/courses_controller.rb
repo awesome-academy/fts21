@@ -4,6 +4,7 @@ class CoursesController < ApplicationController
   before_action :users_have_course_active, only: :start
   before_action :load_users_subjects, only: %i(new create edit update)
   before_action :load_trainees, :load_course_subjects, only: :show
+  before_action :check_trainee_on_course, only: :delete_trainee
 
   def index
     @courses = Course.newest.paginate page: params[:page],
@@ -99,6 +100,19 @@ class CoursesController < ApplicationController
     end
   end
 
+  def delete_trainee
+    ActiveRecord::Base.transaction do
+      @course.course_subjects.each do |course_subject|
+        course_subject.user_subjects
+                      .by_user(@trainee.user_id).destroy_all
+      end
+      @trainee.destroy!
+    end
+    render json: {success: t("courses.delete_trainee_success")}
+  rescue StandardError => ex
+    render json: {error: ex}
+  end
+
   private
 
   def course_params
@@ -121,19 +135,17 @@ class CoursesController < ApplicationController
   end
 
   def update_course_user_subject
-    begin
-      ActiveRecord::Base.transaction do
-        course_subject_ids = @course.course_subjects.pluck(:id).map{|id| {course_subject_id: id, status: :joined}}
-        @course.active!
-        @course.user_courses.update_all status: :active
-        @course.trainees.each do |trainee|
-          trainee.user_subjects.create! course_subject_ids
-        end
+    ActiveRecord::Base.transaction do
+      course_subject_ids = @course.course_subjects.pluck(:id).map{|id| {course_subject_id: id, status: :joined}}
+      @course.active!
+      @course.user_courses.update_all status: :active
+      @course.trainees.each do |trainee|
+        trainee.user_subjects.create! course_subject_ids
       end
-      flash[:success] = t("courses.start_success")
-    rescue StandardError => ex
-      flash[:danger] = ex
     end
+    flash[:success] = t("courses.start_success")
+  rescue StandardError => ex
+    flash[:danger] = ex
   end
 
   def load_trainees
@@ -158,5 +170,11 @@ class CoursesController < ApplicationController
         end
       end
     end
+  end
+
+  def check_trainee_on_course
+    @trainee = UserCourse.find_by user_id: params[:user_id], course_id: @course.id
+    return if @trainee
+    redirect_with_format(t("courses.not_user_on_course"))
   end
 end

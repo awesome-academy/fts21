@@ -101,3 +101,31 @@ $(document).on('click', '#add_trainee', function(e){
       });
   };
 });
+$(document).on('click', '#delete_trainee', function(e){
+  var this_el = $(this);
+  var trainee_id = parseInt($(this).attr('trainee_id'));
+  alertify.confirm(I18n.t("confirm_text"), I18n.t("confirm"),
+    function(){
+      $.ajax({
+        url: window.location.href + '/delete_trainee',
+        data: {user_id: trainee_id},
+        type: 'DELETE'
+      })
+      .done(function(el) {
+        if(el.success){
+          this_el.closest('li').slideUp().remove();
+          alertify.success(el.success);
+          var sum_trainees = parseInt($('#sum_trainees').html()) - 1;
+          $('#sum_trainees').html(sum_trainees)
+        } else {
+          alertify.error(el.error);
+        }
+      })
+      .fail(function(err) {
+        alertify.error(err);
+      });
+    },
+    function(){
+      alertify.error(I18n.t("cancel"));
+    });
+});

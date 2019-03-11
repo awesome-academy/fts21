@@ -24,7 +24,6 @@ class SessionsController < ApplicationController
 
   def load_user
     @user = User.find_by email: params[:session][:email].downcase
-    @user || render(file: "public/404.html", status: 404, layout: true)
   end
 
   def redirect_with_rule user
