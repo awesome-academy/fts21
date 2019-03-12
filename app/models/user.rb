@@ -28,8 +28,8 @@ class User < ApplicationRecord
   scope :not_exit_on_course, ->(course_id){where("id not in (?)", UserCourse.select("user_id").where(course_id: course_id))}
   scope :with_id_name, ->{select(:id, :name)}
 
-  devise :database_authenticatable, :registerable,
-    :rememberable, :validatable
+  devise :database_authenticatable, :registerable, :rememberable,
+    :validatable, :omniauthable, omniauth_providers: %i(google_oauth2)
 
   private
 

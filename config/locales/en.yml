@@ -110,6 +110,7 @@ en:
     user:
       delete: "delete"
       mess_confirm: "You sure?"
+      signin_with_google: "Sign in with Google"
   static_pages:
     home:
       title: "Home"
