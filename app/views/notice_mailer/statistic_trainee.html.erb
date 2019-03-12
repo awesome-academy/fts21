@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+  <body>
+    <h1><%= t "mailers.hi" %><%= @supervisor.name %></h1>
+    <h3><%= t "mailers.statistic.body" %><%= @course.name %></h3>
+    <ul>
+      <% @course.trainees.each do |trainee| %>
+        <li><%= trainee.name %></li>
+      <% end %>
+    </ul>
+  </body>
+</html>
