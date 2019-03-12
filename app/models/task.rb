@@ -1,6 +1,7 @@
 class Task < ApplicationRecord
   belongs_to :subject
   has_many :user_tasks, dependent: :destroy
+  has_many :activities, as: :target, dependent: :destroy
 
   validates :name, presence: true,
     length: {minimum: Settings.task.name_min_length}

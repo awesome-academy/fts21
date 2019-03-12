@@ -10,6 +10,7 @@ class Trainee::TasksController < TraineeController
       @new_user_task = @user_subject.user_tasks.build task_id: @task.id, status: :received
       if @new_user_task.save
         flash[:success] = t "user_subjects.task.report_success"
+        activity_log current_user, @task, t("activities.report")
       else
         flash[:danger] = t "user_subjects.task.report_fail"
       end
@@ -21,6 +22,7 @@ class Trainee::TasksController < TraineeController
     if @user_task&.received?
       begin
         transaction_update_user_task
+        activity_log current_user, @task, t("activities.report")
       rescue StandardError => ex
         flash[:warning] = ex
         flash[:danger] = t "user_subjects.task.finish_fail"

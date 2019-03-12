@@ -40,4 +40,8 @@ class ApplicationController < ActionController::Base
     flash[:warning] = ex
     flash[:danger] = t "user_subjects.finish_fail"
   end
+
+  def activity_log user, target, action_type
+    user.activities.create target: target, action_type: action_type
+  end
 end
