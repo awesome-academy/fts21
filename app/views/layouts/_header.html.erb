@@ -20,19 +20,19 @@
             <i class="fa fa-question"></i><%= t ".nav_help" %>
           <% end %>
         </li>
-        <% if logged_in? %>
+        <% if user_signed_in? %>
           <li class="nav-item dropdown">
               <a href="#" class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown">
                 <i class="fa fa-user"></i><%= t ".nav_account" %>
               </a>
               <div class="dropdown-menu">
                 <%= link_to t(".nav_setting"), root_path, class: "dropdown-item" %>
-                <%= link_to t(".nav_logout"), logout_path, method: :delete, class: "dropdown-item" %>
+                <%= link_to t(".nav_logout"), destroy_user_session_path, method: :delete, class: "dropdown-item" %>
               </div>
           </li>
         <% else %>
           <li class="nav-item">
-            <%= link_to login_path, class: "nav-link" do %>
+            <%= link_to new_user_session_path, class: "nav-link" do %>
               <i class="fa fa-sign-in"></i><%= t(".nav_login") %>
             <% end %>
           </li>
