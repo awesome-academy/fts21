@@ -294,4 +294,12 @@ en:
     finish: "finished"
     report: "reported"
     at: "At: "
+  mailers:
+    hi: "Hi "
+    assign_trainee:
+      title_subject: "You have been added to a new course"
+      body: "You have been added to course: "
+    remove_trainee:
+      title_subject: "You have been removed from a course"
+      body: "You have been removed from course: "
 

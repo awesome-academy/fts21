@@ -18,6 +18,7 @@ gem "rails", "~> 5.2.2"
 gem "redcarpet", "~> 3.3", ">= 3.3.4"
 gem "rubocop", "~> 0.54.0", require: false
 gem "sass-rails", "~> 5.0"
+gem "sidekiq"
 gem "simplemde-rails"
 gem "sqlite3", "~> 1.3.6"
 gem "turbolinks", "~> 5"
