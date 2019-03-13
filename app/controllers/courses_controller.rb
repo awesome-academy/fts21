@@ -93,8 +93,9 @@ class CoursesController < ApplicationController
           trainee_ids.each do |trainee_id|
             @course.user_courses.create! user_id: trainee_id
           end
+          AssignTraineeWorker.perform_async User.by_ids(trainee_ids), @course
         end
-        render json: User.with_id_name(trainee_ids)
+        render json: User.by_ids(trainee_ids).with_id_name
       rescue StandardError => ex
         render json: {error: ex}
       end
@@ -104,12 +105,14 @@ class CoursesController < ApplicationController
   end
 
   def delete_trainee
+    user_course = @trainee
     ActiveRecord::Base.transaction do
       @course.course_subjects.each do |course_subject|
         course_subject.user_subjects
                       .by_user(@trainee.user_id).destroy_all
       end
       @trainee.destroy!
+      RemoveTraineeWorker.perform_async user_course
     end
     render json: {success: t("courses.delete_trainee_success")}
   rescue StandardError => ex
