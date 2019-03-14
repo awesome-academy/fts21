@@ -1,14 +1,5 @@
 class ApplicationController < ActionController::Base
-  include SessionsHelper
-
   private
-
-  def logged_in_user
-    unless logged_in?
-      flash[:danger] = t "users.logged_in_user.mess_error"
-      redirect_to login_path
-    end
-  end
 
   def logged_in_supervisor
     return if current_user&.suppervisor?
@@ -43,5 +34,9 @@ class ApplicationController < ActionController::Base
 
   def activity_log user, target, action_type
     user.activities.create target: target, action_type: action_type
+  end
+
+  def after_sign_in_path_for _resource
+    current_user.trainee? ? trainee_root_path : courses_path
   end
 end

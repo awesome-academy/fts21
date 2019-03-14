@@ -1,0 +1,34 @@
+<% provide :title, t("sessions.new.login") %>
+<h1><%= t "sessions.new.login" %></h1>
+<div class="container">
+  <div class="row">
+    <div class="class_form">
+      <%= form_for resource, as: resource_name, url: session_path(resource_name) do |f| %>
+        <div class="login_title">
+          <h4 class="title_heading"><%= t("sessions.new.login") %></h4>
+        </div>
+        <div class="input-group mb-2 mr-sm-2">
+          <div class="input-group-prepend">
+            <div class="input-group-text">
+              <i class="fa fa-envelope-o" aria-hidden="true"></i>
+            </div>
+          </div>
+          <%= f.email_field :email, class: "form-control", placeholder: t("sessions.new.type_email") %>
+        </div>
+        <div class="input-group mb-2 mr-sm-2">
+          <div class="input-group-prepend">
+            <div class="input-group-text"><i class="fa fa-sign-out" aria-hidden="true"></i></div>
+          </div>
+          <%= f.password_field :password, class: "form-control", placeholder: t("sessions.new.type_password") %>
+        </div>
+        <% if devise_mapping.rememberable? %>
+          <%= f.label t("sessions.new.remember_me"), class: "checkbox inline" do %>
+            <%= f.check_box :remember_me %>
+            <span><%= t "sessions.new.remember_me" %></span>
+          <% end %>
+        <% end %>
+        <%= f.submit t("sessions.new.login"), class: "btn btn-primary btn-block" %>
+      <% end %>
+    </div>
+  </div>
+</div>
