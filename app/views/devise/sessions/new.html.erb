@@ -29,6 +29,7 @@
         <% end %>
         <%= f.submit t("sessions.new.login"), class: "btn btn-primary btn-block" %>
       <% end %>
+      <%= link_to t("users.user.signin_with_google"), user_google_oauth2_omniauth_authorize_path, class: "btn btn-danger btn-block" %>
     </div>
   </div>
 </div>
