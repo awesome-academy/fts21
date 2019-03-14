@@ -6,4 +6,9 @@ class NoticeMailerPreview < ActionMailer::Preview
   def remove_trainee_preview
     NoticeMailer.remove_trainee UserCourse.first
   end
+
+  def statistic_trainee_preview
+    NoticeMailer.statistic_trainee UserCourse.active.group(:course_id)
+                                             .includes(:course).first
+  end
 end

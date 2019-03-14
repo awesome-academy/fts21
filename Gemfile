@@ -23,6 +23,7 @@ gem "simplemde-rails"
 gem "sqlite3", "~> 1.3.6"
 gem "turbolinks", "~> 5"
 gem "uglifier", ">= 1.3.0"
+gem "whenever", require: false
 gem "will_paginate", "~> 3.1.0"
 
 group :development, :test do
