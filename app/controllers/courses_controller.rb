@@ -160,26 +160,26 @@ class CoursesController < ApplicationController
   end
 
   def load_course_subjects
-    @course_subjects = @course.course_subjects.includes(subject: :tasks).paginate page: params[:page],
-      per_page: Settings.pagination.per_page
+    @course_subjects = @course.course_subjects.includes(subject: :tasks)
+                              .paginate page: params[:page],
+                                per_page: Settings.pagination.per_page
   end
 
   def transaction_update_course
     ActiveRecord::Base.transaction do
       @course.close!
       @course.user_courses.update_all status: :finished
-      @course.course_subjects.update_all status: :finished
-      @course.course_subjects.each do |course_subject|
-        course_subject.user_subjects.update_all status: :finished
-        course_subject.user_subjects.each do |user_subject|
-          user_subject.user_tasks.update_all status: :finished
-        end
-      end
+      course_subjects = @course.course_subjects
+      course_subjects.update_all status: :finished
+      user_subjects = UserSubject.by_course_subjects course_subjects.ids
+      user_subjects.update_all status: :finished
+      UserTask.by_user_subjects(user_subjects.ids).update_all status: :finished
     end
   end
 
   def check_trainee_on_course
-    @trainee = UserCourse.find_by user_id: params[:user_id], course_id: @course.id
+    @trainee = UserCourse.find_by user_id: params[:user_id],
+      course_id: @course.id
     return if @trainee
     redirect_with_format(t("courses.not_user_on_course"))
   end

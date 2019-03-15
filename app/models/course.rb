@@ -14,7 +14,6 @@ class Course < ApplicationRecord
 
   scope :newest, ->{order created_at: :desc}
 
-
   def end_time_is_valid
     return if date_start.blank? || date_end.blank?
     error_msg = I18n.t("courses.date_end_earlier_start")

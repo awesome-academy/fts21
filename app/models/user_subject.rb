@@ -10,4 +10,5 @@ class UserSubject < ApplicationRecord
       .where "course_subjects.course_id": course_id,
       user_id: user_id, "user_tasks.status": :finished
   }
+  scope :by_course_subjects, ->(ids){where course_subject_id: ids}
 end
