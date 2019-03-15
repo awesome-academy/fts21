@@ -1,6 +1,7 @@
 class CourseSubjectsController < ApplicationController
-  before_action :logged_in_supervisor, :load_course_subject,
-    :load_subject, :load_tasks, :load_courses
+  before_action :load_course_subject
+  authorize_resource
+  before_action :load_subject, :load_tasks, :load_courses
 
   def show; end
 

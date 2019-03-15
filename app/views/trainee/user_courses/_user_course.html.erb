@@ -1,11 +1,19 @@
 <li class="<%= status_user_course user_course %>">
   <%= link_to user_course.name, trainee_user_course_path(user_course.id) %>
   <span class="float-right">
-    <%= l user_course.date_start, format: :default %> ->
-    <%= l user_course.date_end, format: :default %>
+    <%= link_to edit_course_path(user_course.course) do %>
+      <i class="fa fa-pencil"></i>
+    <% end if can? :update, user_course.course %>
+    <%= link_to user_course.course, method: :delete, data: { confirm: t("confirm") } %>
+      <i class="fa fa-trash-o"></i>
+    <% end if can? :destroy, user_course.course %>
   </span>
   <p><%= user_course.description %></p>
   <span class="meta_course">
     <span class="badge badge-info"><%= user_course.course.subjects.size %></span> <%= t("course.subjects") %>
+    <span class="float-right">
+      <%= date_format_default user_course.date_start %> ->
+      <%= date_format_default user_course.date_end %>
+    </span>
   </span>
 </li>

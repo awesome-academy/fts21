@@ -1,6 +1,6 @@
 class SubjectsController < ApplicationController
-  before_action :logged_in_supervisor
   before_action :load_subject, except: %i(index new create subjects_by_ids)
+  authorize_resource
   before_action :load_users, only: %i(new create edit update)
   before_action :load_tasks, :load_courses, only: :show
 

@@ -1,6 +1,6 @@
 class CoursesController < ApplicationController
-  before_action :logged_in_supervisor
   before_action :load_course, except: %i(index new create)
+  authorize_resource
   before_action :users_have_course_active, only: :start
   before_action :load_users_subjects, only: %i(new create edit update)
   before_action :load_trainees, :load_course_subjects, only: :show
