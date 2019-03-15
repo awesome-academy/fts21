@@ -6,6 +6,8 @@ class UserTask < ApplicationRecord
 
   enum status: {received: 0, finished: 1, expired: 2}
   scope :task_in_user_tasks, ->(user_subject){where(user_subject: user_subject).select("task_id")}
+  scope :by_user_subjects, ->(ids){where user_subject_id: ids}
+
   delegate :name, :description, to: :task, allow_nil: true
 
   private
