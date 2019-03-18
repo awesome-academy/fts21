@@ -105,4 +105,8 @@ module ApplicationHelper
   def user_task_finished course, user
     UserSubject.task_by_course course, user
   end
+
+  def date_format_default date
+    l date, format: :default
+  end
 end

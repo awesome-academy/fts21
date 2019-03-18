@@ -1,6 +1,6 @@
 class TasksController < ApplicationController
-  before_action :logged_in_supervisor
   before_action :load_subject, except: :destroy
+  authorize_resource
   before_action :load_task, except: %i(new create)
 
   def new

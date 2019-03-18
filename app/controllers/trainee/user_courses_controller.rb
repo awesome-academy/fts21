@@ -1,6 +1,6 @@
 class Trainee::UserCoursesController < TraineeController
   before_action :load_user_course, only: :show
-  before_action :correct_user
+  authorize_resource
 
   def show
     @course = @user_course.course
@@ -13,9 +13,5 @@ class Trainee::UserCoursesController < TraineeController
   def load_user_course
     @user_course = UserCourse.find_by id: params[:id]
     @user_course || render(file: "public/404.html", status: 404, layout: true)
-  end
-
-  def correct_user
-    redirect_to root_url unless current_user? @user_course.user
   end
 end

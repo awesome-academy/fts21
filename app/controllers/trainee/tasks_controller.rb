@@ -1,7 +1,8 @@
 class Trainee::TasksController < TraineeController
-  before_action :load_user_subject, :correct_user,
-    :load_course_subject, :load_subject, :load_task,
-    :check_user_subject_active, :load_user_task, only: %i(report finish)
+  before_action :load_user_subject
+  authorize_resource :user_subject
+  before_action :load_course_subject, :check_user_subject_active, :load_subject,
+    :load_task, :load_user_task, only: %i(report finish)
 
   def report
     if @user_task
@@ -40,17 +41,15 @@ class Trainee::TasksController < TraineeController
     @user_subject || render(file: "public/404.html", status: 404, layout: true)
   end
 
-  def correct_user
-    redirect_to root_url unless current_user? @user_subject.user
-  end
-
   def load_task
-    @task = Task.find_by id: params[:id]
-    @task || render(file: "public/404.html", status: 404, layout: true)
+    @task = @subject.tasks.find_by id: params[:id]
+    return @task if @task
+    flash["danger"] = t "user_subjects.task.not_accepted"
+    redirect_to trainee_course_subject_path @course_subject
   end
 
   def load_user_task
-    @user_task = UserTask.find_by user_subject_id: @user_subject.id, task_id: @task
+    @user_task = @user_subject.user_tasks.find_by task_id: @task
   end
 
   def load_course_subject

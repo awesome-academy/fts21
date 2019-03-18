@@ -1,4 +1,8 @@
 class ApplicationController < ActionController::Base
+  rescue_from CanCan::AccessDenied do
+    redirect_with_format t("sessions.not_access")
+  end
+
   private
 
   def logged_in_supervisor
