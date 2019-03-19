@@ -1,7 +1,10 @@
 class TasksController < ApplicationController
   before_action :load_subject, except: :destroy
   authorize_resource
-  before_action :load_task, except: %i(new create)
+  before_action :load_task, only: %i(edit update destroy)
+  before_action :load_all_tasks_soft_deleted,
+    only: %i(soft_deleted restore really_destroy)
+  before_action :load_task_soft_deleted, only: %i(restore really_destroy)
 
   def new
     @task = @subject.tasks.build
@@ -43,6 +46,31 @@ class TasksController < ApplicationController
     end
   end
 
+  def soft_deleted
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  def restore
+    @task_deleted.restore recursive: true
+  rescue StandardError => ex
+    @error = ex
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  def really_destroy
+    @old_task_id = @task_deleted.id
+    @task_deleted.really_destroy!
+  rescue StandardError => ex
+    @error = ex
+    respond_to do |format|
+      format.js
+    end
+  end
+
   private
 
   def task_params
@@ -57,5 +85,14 @@ class TasksController < ApplicationController
   def load_subject
     @subject = Subject.find_by id: params[:subject_id]
     @subject || redirect_with_format(t("subjects.not_found"))
+  end
+
+  def load_all_tasks_soft_deleted
+    @tasks_deleted = @subject.tasks.only_deleted
+  end
+
+  def load_task_soft_deleted
+    @task_deleted = @tasks_deleted.find_by id: params[:id]
+    @task_deleted || redirect_with_format(t("subjects.task.not_found"))
   end
 end

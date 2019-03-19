@@ -1,0 +1,15 @@
+<span class="list-group-item list-group-item-action flex-column align-items-start soft_task_deleted" id="soft_task_deleted_<%= task.id %>">
+  <div class="d-flex w-100 justify-content-between">
+    <h5 class="mb-1"><%= task.name %></h5>
+    <small class="text-muted"><%= t "subjects.task.soft_delete.created_at" %> <%= date_format_default task.created_at %> | <%= t "subjects.task.soft_delete.created_at" %> <%= date_format_default task.deleted_at %></small>
+  </div>
+  <small class="text-muted"><%= task.description %></small>
+  <small class="text-muted float-right">
+    <%= link_to restore_subject_task_path(@subject, task), method: :patch, remote: true, title: t("subjects.task.soft_delete.restore") do %>
+      <i class="fa fa-retweet"></i>
+    <% end %> |
+    <%= link_to really_destroy_subject_task_path(@subject, task), method: :delete, remote: true, title: t("subjects.task.soft_delete.really_destroy"), data: {confirm: t("confirm")} do %>
+      <i class="fa fa-trash"></i>
+    <% end %>
+  </small>
+</span>

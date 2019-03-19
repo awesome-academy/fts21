@@ -9,4 +9,6 @@ class Task < ApplicationRecord
   scope :newest, ->{order created_at: :desc}
   scope :not_exit_in_user_task, ->(user_subject){where("id not in (?)", UserTask.task_in_user_tasks(user_subject))}
   scope :of_subjects, ->(ids){where subject_id: ids}
+
+  acts_as_paranoid
 end

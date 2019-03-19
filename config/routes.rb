@@ -37,7 +37,15 @@ Rails.application.routes.draw do
     end
   end
   resources :subjects do
-    resources :tasks, except: %i(index show)
+    resources :tasks, except: %i(index show) do
+      collection do
+        get "soft_deleted"
+      end
+      member do
+        patch "restore"
+        delete "really_destroy"
+      end
+    end
   end
   resources :course_subjects, only: :show do
     member do

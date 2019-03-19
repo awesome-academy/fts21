@@ -1,0 +1,17 @@
+<div class="modal-dialog modal-lg">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title"><%= t "subjects.task.soft_delete.title_modal" %></h5>
+      <button type="button" class="close" data-dismiss="modal">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <% if @tasks_deleted.any? %>
+        <%= render partial: "shared/task_deleted", collection: @tasks_deleted, as: :task %>
+      <% else %>
+        <div class="alert alert-danger"><%= t "subjects.tasks.no_tasks" %></div>
+      <% end %>
+    </div>
+  </div>
+</div>
