@@ -1,6 +1,8 @@
 <% if @check_success %>
   $('#task_<%= @old_task_id %>').remove();
   alertify.success(I18n.t('subjects.task.delete_success'));
+  var sum_tasks_deleted = parseInt($('#sum_tasks_deleted').html()) + 1;
+  $('#sum_tasks_deleted').html(sum_tasks_deleted);
 <% else %>
   alertify.error(I18n.t('subjects.task.delete_fail'));
 <% end %>

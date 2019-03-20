@@ -1,0 +1,9 @@
+<% if @error %>
+  alertify.error(I18n.t('subjects.task.soft_delete.restore_fail'));
+<% else %>
+  $('#list_tasks_in_subject').prepend('<%= j render "task", task: @task_deleted %>')
+  var sum_tasks_deleted = parseInt($('#sum_tasks_deleted').html()) - 1;
+  $('#sum_tasks_deleted').html(sum_tasks_deleted);
+  $('#new_task').modal('hide');
+  alertify.success(I18n.t('subjects.task.soft_delete.restore_success'));
+<% end %>

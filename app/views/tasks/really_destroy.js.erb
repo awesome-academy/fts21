@@ -1,0 +1,11 @@
+<% if @error %>
+  alertify.error(I18n.t('subjects.task.delete_fail'));
+<% else %>
+  alertify.success(I18n.t('subjects.task.delete_success'));
+  var sum_tasks_deleted = parseInt($('#sum_tasks_deleted').html()) - 1;
+  $('#sum_tasks_deleted').html(sum_tasks_deleted);
+  $('#soft_task_deleted_<%= @old_task_id %>').remove();
+  if(sum_tasks_deleted < 1){
+    $('#new_task').modal('hide');
+  }
+<% end %>

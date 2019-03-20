@@ -255,6 +255,16 @@ en:
       name: "Name"
       description: "Description"
       not_found: "Task does not exist"
+      soft_delete:
+        title_modal: "All Tasks has been soft-deleted"
+        restore_success: "Restore task succesfully"
+        restore_fail: "Restore task failed"
+        sum: "tasks soft-deleted"
+        view: "View"
+        deleted_at: "Deleted at: "
+        created_at: "Created at: "
+        restore: "Restore"
+        really_destroy: "Really destroy"
   course_subjects:
     actived: "This subject of the course is being activated"
     finished: "This subject of the course was finished"

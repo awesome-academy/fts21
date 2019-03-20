@@ -7,6 +7,8 @@
       </div>
     </div>
     <h2 class="tasks_title"><%= t ("subjects.list_tasks") %></h2>
+    <span class="text-info"><span id="sum_tasks_deleted" class="text-danger"><%= @subject.tasks.only_deleted.size %></span> <%= t "subjects.task.soft_delete.sum" %> </span>
+    <%= link_to t("subjects.task.soft_delete.view"), soft_deleted_subject_tasks_path(@subject), remote: true %>
     <div class="list-group" id="list_tasks_in_subject">
       <% if @tasks.any? %>
         <%= render @tasks %>
