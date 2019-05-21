@@ -5,3 +5,4 @@ class ActivitiesController < ApplicationController
                              per_page: Settings.pagination.per_page
   end
 end
+hhhhhhhhh dc chua anh
